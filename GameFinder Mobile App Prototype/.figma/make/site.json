@@ -1,0 +1,10 @@
+{
+  "description": "Discover board games and connect with local players through an interactive platform featuring game details, matchmaking, and session planning.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
