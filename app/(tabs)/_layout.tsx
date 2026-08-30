@@ -56,12 +56,14 @@ const styles = StyleSheet.create({
     borderTopColor: 'rgba(0,240,255,0.2)',
     flexDirection: 'row',
     justifyContent: 'space-around',
+    
   },
   tab: {
     width: '25%',
     alignItems: 'center',
     justifyContent: 'center',
     gap: 4,
+    backgroundColor: '#000000',
   },
   tabText: {
     fontSize: 10,
