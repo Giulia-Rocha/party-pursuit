@@ -140,7 +140,7 @@ Abaixo estão os prints das principais telas e componentes do Party Pursuit dese
 | Background | `#05060C` — Ink | Fundo base de todas as telas |
 | Tema | Dark cyberpunk / terminal hacker | — |
 
-> 🎨 Design no Figma:[Figma]()
+> 🎨 Design no Figma: [Figma](https://www.figma.com/make/q0A30PV2FeWpNxcWumpe8V/GameFinder-Mobile-App-Prototype?fullscreen=1&t=mX86JRN6WfHfD5GS-1&code-node-id=0-6)
 
 ---
 
