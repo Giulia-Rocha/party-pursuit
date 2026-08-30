@@ -115,13 +115,19 @@ Abaixo estão os prints das principais telas e componentes do Party Pursuit dese
 
 | Foto | Descrição |
 |------|-----------|
-| `(Insira o link da imagem aqui)` | **Tela de Login:** Acesso ao app com a nova identidade visual. |
-| `(Insira o link da imagem aqui)` | **Tela de Cadastro:** Formulário de registro de novos jogadores. |
-| `(Insira o link da imagem aqui)` | **Home:** Lista de jogos em destaque e mesas próximas. |
-| `(Insira o link da imagem aqui)` | **Explorar:** Busca de títulos e filtros por categorias. |
-| `(Insira o link da imagem aqui)` | **Detalhes do Jogo:** Informações, avaliações e mesas ativas do jogo escolhido. |
+| <img src="docs/assets/login.jpg" width="200"> | **Tela de Login:** Acesso ao app com a nova identidade visual. |
+| <img src="docs/assets/cadastro.jpg" width="200"> | **Tela de Cadastro:** Formulário de registro de novos jogadores. |
+| <img src="docs/assets/home.jpg" width="200"> | **Home:** Lista de jogos em destaque e mesas próximas. |
+| <img src="docs/assets/explorar.jpg" width="200"> | **Explorar:** Busca de títulos e filtros por categorias. |
+| <img src="docs/assets/jogo.jpg" width="200"> | **Detalhes do Jogo:** Informações, avaliações e mesas ativas do jogo escolhido. |
+| <img src="docs/assets/mapa.jpg" width="200"> | **Mapa de Grupos:** Mapa interativo para buscar grupos de jogos próximos. |
+| <img src="docs/assets/notf.jpg" width="200"> | **Notificações:** Tela de Notificações |
+| <img src="docs/assets/perfil.jpg" width="200"> | **Perfil:** Perfil, configurações, privacidade. |
+| <img src="docs/assets/todos-jogos.jpg" width="200"> | **Jogos** Busca de Jogos, Filtro por tema. |
+| <img src="docs/assets/video.gif" width="200"> | **GIF de Funcionamento do App**  |
 
-*(Nota: Para adicionar as imagens, salve-as em uma pasta como `docs/assets` ou no próprio GitHub e cole o link na tabela acima.)*
+
+
 
 ---
 
@@ -134,7 +140,7 @@ Abaixo estão os prints das principais telas e componentes do Party Pursuit dese
 | Background | `#05060C` — Ink | Fundo base de todas as telas |
 | Tema | Dark cyberpunk / terminal hacker | — |
 
-> 🎨 Design no Figma: _[link a adicionar pelo time]_
+> 🎨 Design no Figma:[Figma]()
 
 ---
 
