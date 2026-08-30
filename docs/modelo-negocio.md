@@ -1,78 +1,78 @@
-# 💰 Modelo de Negócio — GameFinder
+﻿# ðŸ’° Modelo de NegÃ³cio â€” Party Pursuit
 
-## 🎯 Modelo: Freemium + B2B
+## ðŸŽ¯ Modelo: Freemium + B2B
 
-O GameFinder combina um modelo **freemium para usuários** com uma camada **B2B para estabelecimentos**.
-
----
-
-## 🆓 Camada Gratuita (Free)
-
-Disponível para todos os usuários sem custo:
-
-- ✅ Catálogo completo de board games (descoberta + avaliações)
-- ✅ Visualização de sessões abertas no mapa
-- ✅ Entrada em até **3 mesas por mês**
-- ✅ Criação de perfil básico de jogador
-- ✅ Notificações de novas sessões na região
+O Party Pursuit combina um modelo **freemium para usuÃ¡rios** com uma camada **B2B para estabelecimentos**.
 
 ---
 
-## 🏆 GameFinder Pro — R$ 14,90/mês
+## ðŸ†“ Camada Gratuita (Free)
+
+DisponÃ­vel para todos os usuÃ¡rios sem custo:
+
+- âœ… CatÃ¡logo completo de board games (descoberta + avaliaÃ§Ãµes)
+- âœ… VisualizaÃ§Ã£o de sessÃµes abertas no mapa
+- âœ… Entrada em atÃ© **3 mesas por mÃªs**
+- âœ… CriaÃ§Ã£o de perfil bÃ¡sico de jogador
+- âœ… NotificaÃ§Ãµes de novas sessÃµes na regiÃ£o
+
+---
+
+## ðŸ† Party Pursuit Pro â€” R$ 14,90/mÃªs
 
 Plano premium para jogadores ativos:
 
-- 🔓 Mesas ilimitadas por mês
-- 🔓 **Criar sua própria mesa** e recrutar jogadores
-- 🔓 Filtros avançados (duração, número de jogadores, mecânicas)
-- 🔓 Histórico completo de partidas jogadas
-- 🔓 Sem anúncios
-- 🔓 Badge de "Jogador Verificado" no perfil
+- ðŸ”“ Mesas ilimitadas por mÃªs
+- ðŸ”“ **Criar sua prÃ³pria mesa** e recrutar jogadores
+- ðŸ”“ Filtros avanÃ§ados (duraÃ§Ã£o, nÃºmero de jogadores, mecÃ¢nicas)
+- ðŸ”“ HistÃ³rico completo de partidas jogadas
+- ðŸ”“ Sem anÃºncios
+- ðŸ”“ Badge de "Jogador Verificado" no perfil
 
-### Projeção de conversão
-- Usuários gratuitos: 10.000
-- Taxa de conversão estimada: 8%
-- Assinantes Pro: ~800 → **R$ 11.920/mês**
+### ProjeÃ§Ã£o de conversÃ£o
+- UsuÃ¡rios gratuitos: 10.000
+- Taxa de conversÃ£o estimada: 8%
+- Assinantes Pro: ~800 â†’ **R$ 11.920/mÃªs**
 
 ---
 
-## 🏪 GameFinder Business — R$ 89,90/mês
+## ðŸª Party Pursuit Business â€” R$ 89,90/mÃªs
 
-Para boardgame cafés, lojas especializadas e organizadores:
+Para boardgame cafÃ©s, lojas especializadas e organizadores:
 
-- 🏷 **Destaque pago** nas buscas e no mapa
-- 📅 Criação ilimitada de eventos e sessões
-- 📊 Dashboard de métricas (visitas, inscrições, engajamento)
-- 🎯 Segmentação por jogos e público-alvo
-- ✉️ Notificações push para seguidores do espaço
+- ðŸ· **Destaque pago** nas buscas e no mapa
+- ðŸ“… CriaÃ§Ã£o ilimitada de eventos e sessÃµes
+- ðŸ“Š Dashboard de mÃ©tricas (visitas, inscriÃ§Ãµes, engajamento)
+- ðŸŽ¯ SegmentaÃ§Ã£o por jogos e pÃºblico-alvo
+- âœ‰ï¸ NotificaÃ§Ãµes push para seguidores do espaÃ§o
 
 ### Mercado-alvo
-São Paulo tem +150 boardgame cafés e lojas especializadas. Conversão de 15% = ~23 estabelecimentos → **R$ 2.067/mês**
+SÃ£o Paulo tem +150 boardgame cafÃ©s e lojas especializadas. ConversÃ£o de 15% = ~23 estabelecimentos â†’ **R$ 2.067/mÃªs**
 
 ---
 
-## 📈 Projeção de Receita (Ano 1)
+## ðŸ“ˆ ProjeÃ§Ã£o de Receita (Ano 1)
 
 | Fonte | Valor Mensal |
 |-------|-------------|
-| GameFinder Pro (usuários) | R$ 11.920 |
-| GameFinder Business (B2B) | R$ 2.067 |
-| **Total** | **R$ 13.987/mês** |
+| Party Pursuit Pro (usuÃ¡rios) | R$ 11.920 |
+| Party Pursuit Business (B2B) | R$ 2.067 |
+| **Total** | **R$ 13.987/mÃªs** |
 
 ---
 
-## 🚀 Estratégia de Crescimento
+## ðŸš€ EstratÃ©gia de Crescimento
 
-1. **Lançamento:** São Paulo (maior comunidade de board games do Brasil)
-2. **Expansão:** Rio de Janeiro, Belo Horizonte, Curitiba (meses 3–6)
-3. **Parcerias:** Integração com lojas físicas e eventos da comunidade
-4. **Bônus CP6:** Integração com API do BoardGameGeek para catálogo ampliado
+1. **LanÃ§amento:** SÃ£o Paulo (maior comunidade de board games do Brasil)
+2. **ExpansÃ£o:** Rio de Janeiro, Belo Horizonte, Curitiba (meses 3â€“6)
+3. **Parcerias:** IntegraÃ§Ã£o com lojas fÃ­sicas e eventos da comunidade
+4. **BÃ´nus CP6:** IntegraÃ§Ã£o com API do BoardGameGeek para catÃ¡logo ampliado
 
 ---
 
-## 📊 Análise SWOT
+## ðŸ“Š AnÃ¡lise SWOT
 
 | | Positivo | Negativo |
 |--|---------|---------|
-| **Interno** | Nicho bem definido, identidade visual forte | Dependência de massa crítica de usuários |
-| **Externo** | Mercado de board games em crescimento no Brasil | Discord e WhatsApp como hábito estabelecido |
+| **Interno** | Nicho bem definido, identidade visual forte | DependÃªncia de massa crÃ­tica de usuÃ¡rios |
+| **Externo** | Mercado de board games em crescimento no Brasil | Discord e WhatsApp como hÃ¡bito estabelecido |

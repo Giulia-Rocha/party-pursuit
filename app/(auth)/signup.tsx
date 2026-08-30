@@ -15,16 +15,17 @@ import { Typography } from '../../src/constants/Typography';
 import { Spacing } from '../../src/constants/Spacing';
 import { Ionicons } from '@expo/vector-icons';
 
+import { Image } from 'react-native';
+
 function Brand() {
   return (
     <View style={styles.brand}>
-      <View style={styles.brandMark}>
-        <View style={styles.brandDot} />
-        <View style={styles.brandDot} />
-        <View style={styles.brandDot} />
-      </View>
+      <Image 
+        source={require('../../assets/images/logo.png')} 
+        style={{ width: 80, height: 80, resizeMode: 'contain', marginBottom: 16 }} 
+      />
       <Text style={styles.brandText}>
-        GAME<Text style={{ color: Colors.cyan }}>FINDER</Text>
+        PARTY<Text style={{ color: Colors.cyan }}>PURSUIT</Text>
       </Text>
     </View>
   );

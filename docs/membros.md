@@ -1,21 +1,21 @@
-# 👥 Membros do Time — GameFinder
+﻿# ðŸ‘¥ Membros do Time â€” Party Pursuit
 
-## Composição do Grupo
+## ComposiÃ§Ã£o do Grupo
 
 | Membro | Papel | Responsabilidades |
 |--------|-------|-------------------|
-| **Giulia Rocha** | Desenvolvedora Back-end | Stores Zustand, tipos TypeScript, dados mockados, setup do projeto, navegação Expo Router |
-| **Gabriel Danius** | Product Owner | Backlog, priorização de features, documentação de escopo, modelo de negócio, comunicação com o professor |
-| **Carlos Eduardo** | Desenvolvedor Front-end | Componentes de UI, telas, integração do design system, fidelidade ao Figma |
-| **Caio Rossini** | UI/UX Design | Figma, identidade visual, paleta de cores, tipografia, protótipo de telas, assets |
+| **Giulia Rocha** | Desenvolvedora Back-end | Stores Zustand, tipos TypeScript, dados mockados, setup do projeto, navegaÃ§Ã£o Expo Router |
+| **Gabriel Danius** | Product Owner | Backlog, priorizaÃ§Ã£o de features, documentaÃ§Ã£o de escopo, modelo de negÃ³cio, comunicaÃ§Ã£o com o professor |
+| **Carlos Eduardo** | Desenvolvedor Front-end | Componentes de UI, telas, integraÃ§Ã£o do design system, fidelidade ao Figma |
+| **Caio Rossini** | UI/UX Design | Figma, identidade visual, paleta de cores, tipografia, protÃ³tipo de telas, assets |
 
 ---
 
 ## Responsabilidades por Checkpoint
 
-### CP4 — Idealização
+### CP4 â€” IdealizaÃ§Ã£o
 
-| Tarefa | Responsável |
+| Tarefa | ResponsÃ¡vel |
 |--------|-------------|
 | Setup inicial do projeto Expo | Giulia Rocha |
 | Design System (Colors, Typography, Spacing) | Carlos Eduardo + Caio Rossini |
@@ -28,41 +28,41 @@
 | docs/modelo-negocio.md | Gabriel Danius |
 | docs/arquitetura.md | Giulia Rocha |
 
-### CP5 — Protótipo Funcional *(planejado)*
+### CP5 â€” ProtÃ³tipo Funcional *(planejado)*
 
-| Tarefa | Responsável |
+| Tarefa | ResponsÃ¡vel |
 |--------|-------------|
 | Telas completas com dados reais do mock | Carlos Eduardo |
-| Lógica de navegação e fluxos | Giulia Rocha |
-| Testes Jest básicos | Giulia Rocha |
+| LÃ³gica de navegaÃ§Ã£o e fluxos | Giulia Rocha |
+| Testes Jest bÃ¡sicos | Giulia Rocha |
 | Roteiro de testes manuais | Gabriel Danius |
-| Simulação no Android Studio/Expo Go | Todos |
+| SimulaÃ§Ã£o no Android Studio/Expo Go | Todos |
 
-### CP6 — Entrega Final *(planejado)*
+### CP6 â€” Entrega Final *(planejado)*
 
-| Tarefa | Responsável |
+| Tarefa | ResponsÃ¡vel |
 |--------|-------------|
-| Integração com API (BoardGameGeek ou própria) | Giulia Rocha |
+| IntegraÃ§Ã£o com API (BoardGameGeek ou prÃ³pria) | Giulia Rocha |
 | Build via EAS Build | Giulia Rocha |
 | APK final | Giulia Rocha |
-| Documentação final | Gabriel Danius |
+| DocumentaÃ§Ã£o final | Gabriel Danius |
 | QA e testes | Carlos Eduardo + Caio Rossini |
 
 ---
 
-## Estratégia de Branches
+## EstratÃ©gia de Branches
 
 ```
-main           ← protegida (apenas merge via PR aprovado)
-└── develop    ← branch de integração principal
-    ├── feat/design-system      → Carlos Eduardo
-    ├── feat/navigation-setup   → Giulia Rocha
-    ├── feat/stores-mock-data   → Giulia Rocha
-    └── docs/readme-escopo      → Gabriel Danius
+main           â† protegida (apenas merge via PR aprovado)
+â””â”€â”€ develop    â† branch de integraÃ§Ã£o principal
+    â”œâ”€â”€ feat/design-system      â†’ Carlos Eduardo
+    â”œâ”€â”€ feat/navigation-setup   â†’ Giulia Rocha
+    â”œâ”€â”€ feat/stores-mock-data   â†’ Giulia Rocha
+    â””â”€â”€ docs/readme-escopo      â†’ Gabriel Danius
 ```
 
 ### Regras
 - **Nenhum commit direto na `main`**
-- PRs obrigatórios para merge em `develop`
-- Merge de `develop` → `main` ao final de cada Checkpoint
-- Mensagens de commit em português seguindo o padrão: `feat:`, `fix:`, `docs:`, `style:`
+- PRs obrigatÃ³rios para merge em `develop`
+- Merge de `develop` â†’ `main` ao final de cada Checkpoint
+- Mensagens de commit em portuguÃªs seguindo o padrÃ£o: `feat:`, `fix:`, `docs:`, `style:`

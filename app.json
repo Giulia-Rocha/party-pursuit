@@ -1,9 +1,9 @@
-{
+﻿{
   "expo": {
-    "name": "GameFinder",
-    "slug": "gamefinder",
+    "name": "Party Pursuit",
+    "slug": "Party Pursuit",
     "version": "1.0.0",
-    "scheme": "gamefinder",
+    "scheme": "Party Pursuit",
     "orientation": "portrait",
     "userInterfaceStyle": "dark",
     "icon": "./assets/images/icon.png",
@@ -14,14 +14,14 @@
     },
     "ios": {
       "supportsTablet": false,
-      "bundleIdentifier": "com.gamefinder.app"
+      "bundleIdentifier": "com.Party Pursuit.app"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#05060C"
       },
-      "package": "com.gamefinder.app"
+      "package": "com.Party Pursuit.app"
     },
     "web": {
       "bundler": "metro",

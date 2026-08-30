@@ -1,61 +1,61 @@
-# 📋 Escopo do Projeto — GameFinder
+﻿# ðŸ“‹ Escopo do Projeto â€” Party Pursuit
 
-## 🎯 Problema Identificado
+## ðŸŽ¯ Problema Identificado
 
-A comunidade de board gamers no Brasil é apaixonada e crescente, mas **altamente fragmentada**. Encontrar pessoas para jogar é um desafio constante:
+A comunidade de board gamers no Brasil Ã© apaixonada e crescente, mas **altamente fragmentada**. Encontrar pessoas para jogar Ã© um desafio constante:
 
-- Grupos no **WhatsApp** são fechados e sem descoberta pública
-- Servidores no **Discord** são segmentados por jogo/cidade, sem matchmaking
-- **BoardGameGeek** é focado em catálogo, não em encontrar partidas locais
-- Eventos físicos em lojas especializadas têm baixa visibilidade e alcance
-- Não existe uma plataforma mobile brasileira com foco em **matchmaking geográfico** para board games
+- Grupos no **WhatsApp** sÃ£o fechados e sem descoberta pÃºblica
+- Servidores no **Discord** sÃ£o segmentados por jogo/cidade, sem matchmaking
+- **BoardGameGeek** Ã© focado em catÃ¡logo, nÃ£o em encontrar partidas locais
+- Eventos fÃ­sicos em lojas especializadas tÃªm baixa visibilidade e alcance
+- NÃ£o existe uma plataforma mobile brasileira com foco em **matchmaking geogrÃ¡fico** para board games
 
 **Resultado:** jogadores com jogos parados na prateleira, sem grupo para jogar.
 
 ---
 
-## 👥 Público-Alvo
+## ðŸ‘¥ PÃºblico-Alvo
 
-### Perfil Primário
-- **Idade:** 18–35 anos
+### Perfil PrimÃ¡rio
+- **Idade:** 18â€“35 anos
 - **Perfil:** Gamers casuais a hardcore de board games
-- **Localização:** Centros urbanos (São Paulo, Rio, Belo Horizonte, Curitiba)
+- **LocalizaÃ§Ã£o:** Centros urbanos (SÃ£o Paulo, Rio, Belo Horizonte, Curitiba)
 - **Comportamento:** Usa apps mobile diariamente, ativo em comunidades online
-- **Dor principal:** Não sabe onde encontrar grupos ou mesas abertas perto de casa
+- **Dor principal:** NÃ£o sabe onde encontrar grupos ou mesas abertas perto de casa
 
-### Perfil Secundário
-- **Organizadores:** Donos de boardgame cafés, lojistas e organizadores de eventos que precisam divulgar sessões abertas
+### Perfil SecundÃ¡rio
+- **Organizadores:** Donos de boardgame cafÃ©s, lojistas e organizadores de eventos que precisam divulgar sessÃµes abertas
 - **Grupos estabelecidos:** Times que querem recrutar novos membros para seus grupos fixos
 
 ---
 
-## 💡 Proposta de Valor
+## ðŸ’¡ Proposta de Valor
 
-> **"Encontre sua próxima mesa."**
+> **"Encontre sua prÃ³xima mesa."**
 
-O GameFinder conecta jogadores locais em 3 passos simples:
+O Party Pursuit conecta jogadores locais em 3 passos simples:
 
-1. **Descubra** — Explore um catálogo curado de board games com avaliações e mecânicas
-2. **Encontre** — Veja sessões abertas perto de você em tempo real no mapa
-3. **Jogue** — Entre numa mesa com um toque e receba confirmação imediata
+1. **Descubra** â€” Explore um catÃ¡logo curado de board games com avaliaÃ§Ãµes e mecÃ¢nicas
+2. **Encontre** â€” Veja sessÃµes abertas perto de vocÃª em tempo real no mapa
+3. **Jogue** â€” Entre numa mesa com um toque e receba confirmaÃ§Ã£o imediata
 
 ---
 
-## 🏆 Diferenciais Competitivos
+## ðŸ† Diferenciais Competitivos
 
-| Concorrente | Limitação | Como o GameFinder supera |
+| Concorrente | LimitaÃ§Ã£o | Como o Party Pursuit supera |
 |------------|-----------|--------------------------|
-| **Discord** | Sem geolocalização, sem catálogo de jogos | Matchmaking geográfico integrado ao catálogo |
-| **BoardGameGeek** | Focado em desktop, sem sessões ao vivo | Mobile-first, sessões em tempo real |
+| **Discord** | Sem geolocalizaÃ§Ã£o, sem catÃ¡logo de jogos | Matchmaking geogrÃ¡fico integrado ao catÃ¡logo |
+| **BoardGameGeek** | Focado em desktop, sem sessÃµes ao vivo | Mobile-first, sessÃµes em tempo real |
 | **WhatsApp Groups** | Grupos fechados, sem descoberta | Plataforma aberta de descoberta local |
-| **Meetup** | Genérico, sem foco em board games | Especializado, com filtragem por jogo e mecânica |
+| **Meetup** | GenÃ©rico, sem foco em board games | Especializado, com filtragem por jogo e mecÃ¢nica |
 
 ---
 
-## 🗺 Roadmap por Checkpoint
+## ðŸ—º Roadmap por Checkpoint
 
-| Checkpoint | Entregável |
+| Checkpoint | EntregÃ¡vel |
 |-----------|-----------|
-| **CP4** | Idealização, marca, setup técnico, documentação inicial |
-| **CP5** | Protótipo funcional com dados mockados e navegação completa |
-| **CP6** | App final com API real + APK instalável |
+| **CP4** | IdealizaÃ§Ã£o, marca, setup tÃ©cnico, documentaÃ§Ã£o inicial |
+| **CP5** | ProtÃ³tipo funcional com dados mockados e navegaÃ§Ã£o completa |
+| **CP6** | App final com API real + APK instalÃ¡vel |

@@ -1,5 +1,5 @@
-/**
- * GameFinder Design System — Typography
+﻿/**
+ * Party Pursuit Design System â€” Typography
  * Baseado na identidade visual do Figma
  */
 export const Typography = {
@@ -26,7 +26,7 @@ export const Typography = {
     display: 35,
   },
 
-  /** Letter spacing padrão */
+  /** Letter spacing padrÃ£o */
   spacing: {
     eyebrow: 1.4,
     caps: 1.0,

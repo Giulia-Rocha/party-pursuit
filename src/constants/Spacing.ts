@@ -1,6 +1,6 @@
-/**
- * GameFinder Design System — Spacing
- * Sistema de espaçamento e bordas arredondadas
+﻿/**
+ * Party Pursuit Design System â€” Spacing
+ * Sistema de espaÃ§amento e bordas arredondadas
  */
 export const Spacing = {
   /** 4px */
