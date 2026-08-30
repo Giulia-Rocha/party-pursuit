@@ -1,4 +1,4 @@
-# 🎮 GameFinder
+# 🎮 Party Pursuit
 
 > **Encontre sua próxima mesa.** Descubra board games e conecte-se a jogadores perto de você.
 
@@ -11,7 +11,7 @@
 
 ## 📱 Sobre o App
 
-O **GameFinder** resolve um problema real da comunidade de board gamers: **é difícil encontrar grupos para jogar**. O app conecta jogadores locais, exibe sessões abertas perto de você e permite descobrir novos jogos de acordo com o seu perfil.
+O **Party Pursuit** resolve um problema real da comunidade de board gamers: **é difícil encontrar grupos para jogar**. O app conecta jogadores locais, exibe sessões abertas perto de você e permite descobrir novos jogos de acordo com o seu perfil.
 
 ### 🎯 Problema
 Grupos de board games vivem dispersos em grupos de WhatsApp, Discord e eventos avulsos — sem centralização, sem descoberta, sem matchmaking.
@@ -118,7 +118,7 @@ cp04-mobile/
 | Background | `#05060C` — Ink | Fundo base de todas as telas |
 | Tema | Dark cyberpunk / terminal hacker | — |
 
-> 🎨 Design no Figma: _[link a adicionar pelo time]_
+> 🎨 Design no Figma: [Figma](https://www.figma.com/make/q0A30PV2FeWpNxcWumpe8V/GameFinder-Mobile-App-Prototype?fullscreen=1&t=mX86JRN6WfHfD5GS-1&code-node-id=0-6)
 
 ---
 
