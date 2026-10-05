@@ -15,6 +15,7 @@ interface GameState {
   clearFilters: () => void;
   getFiltered: () => Game[];
   getById: (id: string) => Game | undefined;
+  replaceGames: (games: Game[]) => void;
 }
 
 export const useGameStore = create<GameState>((set, get) => ({
@@ -36,4 +37,5 @@ export const useGameStore = create<GameState>((set, get) => ({
   },
 
   getById: (id) => get().games.find((g) => g.id === id),
+  replaceGames: (games) => set({ games }),
 }));

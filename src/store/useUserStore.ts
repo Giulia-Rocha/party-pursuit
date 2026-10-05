@@ -1,4 +1,6 @@
 import { create } from 'zustand';
+import { persist, createJSONStorage } from 'zustand/middleware';
+import { appStorage } from '../lib/storage';
 import type { User } from '../types/User';
 
 interface UserState {
@@ -16,7 +18,7 @@ const INITIAL_USER: User = {
   joinedSessionIds: [],
 };
 
-export const useUserStore = create<UserState>((set, get) => ({
+export const useUserStore = create<UserState>()(persist((set, get) => ({
   user: INITIAL_USER,
 
   setUser: (partial) =>
@@ -45,4 +47,7 @@ export const useUserStore = create<UserState>((set, get) => ({
       },
     });
   },
+}), {
+  name: 'party-pursuit-user',
+  storage: createJSONStorage(() => appStorage),
 }));

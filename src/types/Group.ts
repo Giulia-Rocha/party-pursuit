@@ -9,6 +9,8 @@ export interface TableSession {
   /** Ex: "Meeple Hub, Pinheiros" */
   location: string;
   distanceKm: number;
+  latitude?: number;
+  longitude?: number;
   /** ISO 8601 date string */
   scheduledAt: string;
   totalSlots: number;
