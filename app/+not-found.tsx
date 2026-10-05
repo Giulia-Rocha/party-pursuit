@@ -6,7 +6,7 @@ export default function NotFoundScreen() {
   const router = useRouter();
   return (
     <View style={styles.container}>
-      <Text style={styles.eyebrow}>// ERRO 404</Text>
+      <Text style={styles.eyebrow}>{'// ERRO 404'}</Text>
       <Text style={styles.title}>PÁGINA{'\n'}<Text style={{ color: Colors.cyan }}>NÃO ENCONTRADA.</Text></Text>
       <Pressable onPress={() => router.replace('/(tabs)')} style={styles.btn}>
         <Text style={styles.btnText}>VOLTAR PARA O INÍCIO</Text>

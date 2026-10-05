@@ -8,14 +8,17 @@ import {
   Text,
   TextInput,
   View,
+  Alert,
+  Image,
 } from 'react-native';
 import { useRouter } from 'expo-router';
 import { Colors } from '../../src/constants/Colors';
 import { Typography } from '../../src/constants/Typography';
 import { Spacing } from '../../src/constants/Spacing';
 import { Ionicons } from '@expo/vector-icons';
-
-import { Image } from 'react-native';
+import { validateSignup } from '../../src/utils/validation';
+import { useUserStore } from '../../src/store/useUserStore';
+import { isSupabaseConfigured, supabase } from '../../src/lib/supabase';
 
 function Brand() {
   return (
@@ -63,6 +66,26 @@ export default function SignupScreen() {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
+  const setUser = useUserStore((state) => state.setUser);
+
+  const handleSignup = async () => {
+    const validationError = validateSignup(username, email, password);
+    if (validationError) return Alert.alert('Não foi possível criar a conta', validationError);
+    setLoading(true);
+    if (isSupabaseConfigured) {
+      const { data, error } = await supabase.auth.signUp({
+        email: email.trim(), password, options: { data: { username: username.trim() } },
+      });
+      setLoading(false);
+      if (error) return Alert.alert('Não foi possível criar a conta', error.message);
+      if (!data.session) Alert.alert('Confirme seu e-mail', 'Enviamos um link de confirmação antes do primeiro acesso.');
+    } else {
+      setLoading(false);
+    }
+    setUser({ username: username.trim().toUpperCase() });
+    router.replace('/(tabs)');
+  };
 
   return (
     <SafeAreaView style={styles.safe}>
@@ -76,7 +99,7 @@ export default function SignupScreen() {
 
         <Brand />
 
-        <Text style={styles.eyebrow}>// CRIAR IDENTIDADE</Text>
+        <Text style={styles.eyebrow}>{'// CRIAR IDENTIDADE'}</Text>
         <Text style={styles.title}>
           ENTRE PARA A{'\n'}
           <Text style={{ color: Colors.cyan }}>COMUNIDADE.</Text>
@@ -99,10 +122,11 @@ export default function SignupScreen() {
         />
 
         <Pressable
-          onPress={() => router.replace('/(tabs)')}
+          onPress={handleSignup}
+          disabled={loading}
           style={({ pressed }) => [styles.primaryBtn, { opacity: pressed ? 0.82 : 1 }]}
         >
-          <Text style={styles.primaryBtnText}>CRIAR CONTA</Text>
+          <Text style={styles.primaryBtnText}>{loading ? 'CRIANDO...' : 'CRIAR CONTA'}</Text>
           <Ionicons name="arrow-forward" size={18} color="white" />
         </Pressable>
 

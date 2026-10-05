@@ -6,6 +6,7 @@ import {
   StyleSheet,
   Text,
   View,
+  Alert,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { Colors } from '../../src/constants/Colors';
@@ -13,8 +14,11 @@ import { Typography } from '../../src/constants/Typography';
 import { Spacing } from '../../src/constants/Spacing';
 import { useUserStore } from '../../src/store/useUserStore';
 import { useGameStore } from '../../src/store/useGameStore';
+import { useRouter } from 'expo-router';
+import { isSupabaseConfigured, supabase } from '../../src/lib/supabase';
 
 export default function ProfileScreen() {
+  const router = useRouter();
   const { user } = useUserStore();
   const games = useGameStore((s) => s.games);
   const favGames = games.filter((g) => user.favoriteGameIds.includes(g.id));
@@ -84,19 +88,24 @@ export default function ProfileScreen() {
         {/* Placeholder para CP5/CP6 */}
         <View style={styles.section}>
           <Text style={styles.sectionEyebrow}>CONFIGURAÇÕES</Text>
-          <Pressable style={styles.menuItem}>
+          <Pressable style={styles.menuItem} onPress={() => router.push('/notifications')}>
             <Ionicons name="notifications-outline" size={18} color={Colors.textSecondary} />
             <Text style={styles.menuLabel}>Notificações</Text>
             <Ionicons name="chevron-forward" size={14} color={Colors.textMuted} />
           </Pressable>
-          <Pressable style={styles.menuItem}>
+          <Pressable style={styles.menuItem} onPress={() => Alert.alert('Privacidade', 'Localização é solicitada somente ao abrir o mapa. Seus dados são protegidos por políticas de acesso por usuário.') }>
             <Ionicons name="shield-outline" size={18} color={Colors.textSecondary} />
             <Text style={styles.menuLabel}>Privacidade</Text>
             <Ionicons name="chevron-forward" size={14} color={Colors.textMuted} />
           </Pressable>
-          <Pressable style={styles.menuItem}>
+          <Pressable style={styles.menuItem} onPress={() => Alert.alert('Ajuda', 'Consulte o manual de uso no repositório ou fale com a equipe Party Pursuit.') }>
             <Ionicons name="help-circle-outline" size={18} color={Colors.textSecondary} />
             <Text style={styles.menuLabel}>Ajuda</Text>
+            <Ionicons name="chevron-forward" size={14} color={Colors.textMuted} />
+          </Pressable>
+          <Pressable style={styles.menuItem} onPress={async () => { if (isSupabaseConfigured) await supabase.auth.signOut(); router.replace('/(auth)'); }}>
+            <Ionicons name="log-out-outline" size={18} color={Colors.magenta} />
+            <Text style={styles.menuLabel}>Sair</Text>
             <Ionicons name="chevron-forward" size={14} color={Colors.textMuted} />
           </Pressable>
         </View>

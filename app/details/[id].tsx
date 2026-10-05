@@ -16,6 +16,7 @@ import { Typography } from '../../src/constants/Typography';
 import { Spacing } from '../../src/constants/Spacing';
 import { useGameStore } from '../../src/store/useGameStore';
 import { useUserStore } from '../../src/store/useUserStore';
+import { syncFavorite } from '../../src/services/favoriteService';
 
 function StatBadge({
   icon,
@@ -72,7 +73,11 @@ export default function DetailsScreen() {
           <Pressable onPress={() => router.back()} style={styles.back}>
             <Ionicons name="chevron-back" size={22} color="white" />
           </Pressable>
-          <Pressable onPress={() => toggleFavorite(game.id)} style={styles.favBtn}>
+          <Pressable onPress={() => {
+            const nextFavorite = !user.favoriteGameIds.includes(game.id);
+            toggleFavorite(game.id);
+            syncFavorite(game.id, nextFavorite).catch(() => toggleFavorite(game.id));
+          }} style={styles.favBtn}>
             <Ionicons
               name={isFav ? 'heart' : 'heart-outline'}
               size={22}

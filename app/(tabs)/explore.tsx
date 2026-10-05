@@ -105,6 +105,7 @@ export default function ExploreScreen() {
             onPress={() => router.push(`/details/${game.id}`)}
           />
         ))}
+        <Text style={styles.attribution}>Catálogo Party Pursuit · fallback local disponível</Text>
       </ScrollView>
     </SafeAreaView>
   );
@@ -190,4 +191,5 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     letterSpacing: 0.6,
   },
+  attribution: { color: Colors.textMuted, fontSize: 9, textAlign: 'center', marginTop: 24 },
 });

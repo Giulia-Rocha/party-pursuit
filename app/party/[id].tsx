@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import {
   Image,
   Pressable,
@@ -8,21 +7,24 @@ import {
   StyleSheet,
   Text,
   View,
+  Alert,
 } from 'react-native';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Ionicons } from '@expo/vector-icons';
 import { Colors } from '../../src/constants/Colors';
 import { Typography } from '../../src/constants/Typography';
-import { Spacing } from '../../src/constants/Spacing';
 import { useGroupStore } from '../../src/store/useGroupStore';
 import { useUserStore } from '../../src/store/useUserStore';
+import { isSupabaseConfigured, supabase } from '../../src/lib/supabase';
 
 export default function PartyScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const router = useRouter();
   const sessions = useGroupStore((s) => s.sessions);
-  const { user, joinSession } = useUserStore();
+  const joinGroup = useGroupStore((s) => s.joinSession);
+  const leaveGroup = useGroupStore((s) => s.leaveSession);
+  const { user, joinSession, leaveSession } = useUserStore();
 
   const session = sessions.find((s) => s.id === id);
   const hasJoined = user.joinedSessionIds.includes(id ?? '');
@@ -102,18 +104,33 @@ export default function PartyScreen() {
           ) : (
             <Pressable
               style={({ pressed }) => [styles.primaryBtn, { opacity: pressed ? 0.82 : 1 }]}
-              onPress={() => joinSession(session.id)}
+              onPress={async () => {
+                if (isSupabaseConfigured && isUuid(session.id)) {
+                  const { error } = await supabase.rpc('join_session', { target_session: session.id });
+                  if (error) return Alert.alert('Não foi possível entrar', error.message);
+                }
+                if (joinGroup(session.id)) joinSession(session.id);
+              }}
             >
               <Text style={styles.primaryBtnText}>ENTRAR NA PARTIDA</Text>
               <Ionicons name="arrow-forward" size={18} color="white" />
             </Pressable>
           )}
 
-          {hasJoined && (
+          {hasJoined && <>
+            <Pressable onPress={async () => {
+              if (isSupabaseConfigured && isUuid(session.id)) {
+                const { error } = await supabase.rpc('leave_session', { target_session: session.id });
+                if (error) return Alert.alert('Não foi possível sair', error.message);
+              }
+              leaveGroup(session.id); leaveSession(session.id);
+            }}>
+              <Text style={styles.link}>SAIR DESTA MESA</Text>
+            </Pressable>
             <Pressable onPress={() => router.push('/(tabs)')}>
               <Text style={styles.link}>VOLTAR PARA O INÍCIO</Text>
             </Pressable>
-          )}
+          </>}
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -206,3 +223,7 @@ const styles = StyleSheet.create({
   notFoundText: { color: Colors.textPrimary, fontSize: 18 },
   backLink: { color: Colors.cyan, fontSize: 14 },
 });
+
+function isUuid(value: string) {
+  return /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(value);
+}

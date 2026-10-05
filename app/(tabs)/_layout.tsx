@@ -1,7 +1,7 @@
 import { Tabs } from 'expo-router';
 import { BlurView } from 'expo-blur';
 import { Ionicons } from '@expo/vector-icons';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { Pressable, StyleSheet, Text } from 'react-native';
 import { Colors } from '../../src/constants/Colors';
 
 const TAB_CONFIG = [
@@ -15,10 +15,9 @@ export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{ headerShown: false }}
-      tabBar={({ state, descriptors, navigation }) => (
+      tabBar={({ state, navigation }) => (
         <BlurView intensity={45} tint="dark" style={styles.tabBar}>
           {state.routes.map((route, index) => {
-            const { options } = descriptors[route.key];
             const tab = TAB_CONFIG[index];
             const isFocused = state.index === index;
 
@@ -56,7 +55,6 @@ const styles = StyleSheet.create({
     borderTopColor: 'rgba(0,240,255,0.2)',
     flexDirection: 'row',
     justifyContent: 'space-around',
-    
   },
   tab: {
     width: '25%',

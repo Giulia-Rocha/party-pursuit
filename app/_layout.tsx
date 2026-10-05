@@ -4,6 +4,7 @@ import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from 'react';
 import { useFonts } from 'expo-font';
 import { Colors } from '../src/constants/Colors';
+import { AppProviders } from '../src/providers/AppProviders';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -24,7 +25,7 @@ export default function RootLayout() {
   }
 
   return (
-    <>
+    <AppProviders>
       <StatusBar style="light" backgroundColor={Colors.ink} />
       <Stack screenOptions={{ headerShown: false, animation: 'fade' }}>
         <Stack.Screen name="(auth)" />
@@ -32,9 +33,10 @@ export default function RootLayout() {
         <Stack.Screen name="catalog" />
         <Stack.Screen name="details/[id]" />
         <Stack.Screen name="party/[id]" />
+        <Stack.Screen name="session/new" />
         <Stack.Screen name="notifications" />
         <Stack.Screen name="+not-found" />
       </Stack>
-    </>
+    </AppProviders>
   );
 }

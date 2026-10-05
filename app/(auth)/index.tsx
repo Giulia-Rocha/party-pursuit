@@ -8,15 +8,16 @@ import {
   Text,
   TextInput,
   View,
+  Alert,
+  Image,
 } from 'react-native';
 import { useRouter } from 'expo-router';
 import { Colors } from '../../src/constants/Colors';
 import { Typography } from '../../src/constants/Typography';
 import { Spacing } from '../../src/constants/Spacing';
-import { LinearGradient } from 'expo-linear-gradient';
 import { Ionicons } from '@expo/vector-icons';
-
-import { Image } from 'react-native';
+import { validateLogin } from '../../src/utils/validation';
+import { isSupabaseConfigured, supabase } from '../../src/lib/supabase';
 
 function Brand() {
   return (
@@ -63,6 +64,21 @@ export default function LoginScreen() {
   const router = useRouter();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
+
+  const handleLogin = async () => {
+    const validationError = validateLogin(email, password);
+    if (validationError) return Alert.alert('Não foi possível entrar', validationError);
+    setLoading(true);
+    if (isSupabaseConfigured) {
+      const { error } = await supabase.auth.signInWithPassword({ email: email.trim(), password });
+      setLoading(false);
+      if (error) return Alert.alert('Não foi possível entrar', error.message);
+    } else {
+      setLoading(false);
+    }
+    router.replace('/(tabs)');
+  };
 
   return (
     <SafeAreaView style={styles.safe}>
@@ -73,7 +89,7 @@ export default function LoginScreen() {
       <ScrollView contentContainerStyle={styles.container} keyboardShouldPersistTaps="handled">
         <Brand />
 
-        <Text style={styles.eyebrow}>// ACESSO À REDE LOCAL</Text>
+        <Text style={styles.eyebrow}>{'// ACESSO À REDE LOCAL'}</Text>
         <Text style={styles.title}>
           ENCONTRE SUA{'\n'}
           <Text style={{ color: Colors.cyan }}>PRÓXIMA MESA.</Text>
@@ -95,10 +111,11 @@ export default function LoginScreen() {
         />
 
         <Pressable
-          onPress={() => router.replace('/(tabs)')}
+          onPress={handleLogin}
+          disabled={loading}
           style={({ pressed }) => [styles.primaryBtn, { opacity: pressed ? 0.82 : 1 }]}
         >
-          <Text style={styles.primaryBtnText}>ENTRAR NO JOGO</Text>
+          <Text style={styles.primaryBtnText}>{loading ? 'CONECTANDO...' : 'ENTRAR NO JOGO'}</Text>
           <Ionicons name="arrow-forward" size={18} color="white" />
         </Pressable>
 

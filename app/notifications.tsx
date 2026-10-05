@@ -40,7 +40,7 @@ const MOCK_NOTIFICATIONS = [
 
 export default function NotificationsScreen() {
   const router = useRouter();
-  const [items, setItems] = useState(MOCK_NOTIFICATIONS);
+  const [items, setItems] = useState(() => MOCK_NOTIFICATIONS.map((item) => ({ ...item, read: false })));
 
   return (
     <SafeAreaView style={styles.safe}>
@@ -61,7 +61,7 @@ export default function NotificationsScreen() {
 
         {/* Ações */}
         <View style={styles.actions}>
-          <Pressable onPress={() => setItems([...items])}>
+          <Pressable onPress={() => setItems(items.map((item) => ({ ...item, read: true })))}>
             <Text style={styles.actionRead}>✓ LER TODAS</Text>
           </Pressable>
           <Pressable onPress={() => setItems([])}>
@@ -73,8 +73,11 @@ export default function NotificationsScreen() {
           items.map((item) => (
             <Pressable
               key={item.id}
-              style={styles.noticeCard}
-              onPress={() => router.push(item.route as any)}
+              style={[styles.noticeCard, item.read && styles.noticeRead]}
+              onPress={() => {
+                setItems((current) => current.map((notice) => notice.id === item.id ? { ...notice, read: true } : notice));
+                router.push(item.route as any);
+              }}
             >
               <View style={styles.noticeDot} />
               <View style={{ flex: 1 }}>
@@ -155,6 +158,7 @@ const styles = StyleSheet.create({
     gap: 10,
     alignItems: 'center',
   },
+  noticeRead: { opacity: 0.6 },
   noticeDot: {
     width: 7,
     height: 7,

@@ -14,11 +14,14 @@ import { Colors } from '../../src/constants/Colors';
 import { Typography } from '../../src/constants/Typography';
 import { Spacing } from '../../src/constants/Spacing';
 import { useGroupStore } from '../../src/store/useGroupStore';
+import { SessionMap } from '../../src/components/map/SessionMap';
+import { useState } from 'react';
 
 export default function MapScreen() {
   const router = useRouter();
   const sessions = useGroupStore((s) => s.sessions);
-  const open = sessions.filter((s) => s.isOpen);
+  const [onlyAvailable, setOnlyAvailable] = useState(true);
+  const open = sessions.filter((s) => !onlyAvailable || s.isOpen);
 
   return (
     <SafeAreaView style={styles.safe}>
@@ -32,25 +35,21 @@ export default function MapScreen() {
           <Text style={styles.title}>Mesas por perto</Text>
         </View>
 
-        {/* Mapa mockado (placeholder visual) */}
-        <View style={styles.map}>
-          <View style={styles.mapRoute} />
-          <View style={[styles.pin, { left: 72, top: 72 }]}>
-            <Text style={styles.pinText}>3</Text>
+        <Pressable
+          onPress={() => router.push('/session/new' as any)}
+          style={({ pressed }) => [styles.createButton, pressed && { opacity: 0.82 }]}
+        >
+          <View style={styles.createIcon}>
+            <Ionicons name="add" size={24} color={Colors.textPrimary} />
           </View>
-          <View style={[styles.pin, { right: 70, top: 124 }]}>
-            <Text style={styles.pinText}>2</Text>
+          <View style={styles.createCopy}>
+            <Text style={styles.createTitle}>CRIAR NOVA MESA</Text>
+            <Text style={styles.createSubtitle}>Escolha o jogo, local e horário</Text>
           </View>
-          <View style={[styles.pin, { left: 158, bottom: 36, backgroundColor: '#3b0b1b', borderColor: Colors.magenta }]}>
-            <Text style={styles.pinText}>1</Text>
-          </View>
-          <Text style={[styles.mapLabel, { left: 21, top: 34 }]}>PINHEIROS</Text>
-          <Text style={[styles.mapLabel, { right: 18, bottom: 34 }]}>VILA MADALENA</Text>
-          <View style={styles.mapOverlay}>
-            <Ionicons name="map-outline" size={32} color={Colors.cyan} />
-            <Text style={styles.mapNote}>Mapa integrado no CP6</Text>
-          </View>
-        </View>
+          <Ionicons name="arrow-forward" size={19} color={Colors.textPrimary} />
+        </Pressable>
+
+        <SessionMap sessions={open} onSelect={(id) => router.push(`/party/${id}`)} />
 
         {/* Lista de mesas */}
         <View style={styles.sectionHeader}>
@@ -58,8 +57,8 @@ export default function MapScreen() {
             <Text style={styles.eyebrow}>{open.length} MESAS ABERTAS</Text>
             <Text style={styles.sectionTitle}>Entre na partida</Text>
           </View>
-          <Pressable>
-            <Text style={styles.sectionAction}>FILTROS →</Text>
+          <Pressable onPress={() => setOnlyAvailable((value) => !value)}>
+            <Text style={styles.sectionAction}>{onlyAvailable ? 'SÓ COM VAGAS' : 'TODAS'} →</Text>
           </Pressable>
         </View>
 
@@ -117,6 +116,32 @@ const styles = StyleSheet.create({
     color: Colors.textPrimary,
     marginTop: 4,
   },
+  createButton: {
+    minHeight: 72,
+    marginHorizontal: Spacing.md,
+    marginTop: 16,
+    marginBottom: 20,
+    paddingHorizontal: 14,
+    backgroundColor: Colors.magenta,
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 12,
+    shadowColor: Colors.magenta,
+    shadowOpacity: 0.4,
+    shadowRadius: 12,
+    elevation: 6,
+  },
+  createIcon: {
+    width: 40,
+    height: 40,
+    borderWidth: 1,
+    borderColor: 'rgba(255,255,255,0.45)',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  createCopy: { flex: 1 },
+  createTitle: { color: Colors.textPrimary, fontSize: 12, fontWeight: '800', letterSpacing: 0.8 },
+  createSubtitle: { color: 'rgba(255,255,255,0.78)', fontSize: 10, marginTop: 4 },
   map: {
     height: 288,
     marginTop: 8,

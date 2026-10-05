@@ -8,6 +8,7 @@ import { Spacing } from '../../src/constants/Spacing';
 import { GameTile } from '../../src/components/game/GameTile';
 import { useGameStore } from '../../src/store/useGameStore';
 import { useGroupStore } from '../../src/store/useGroupStore';
+import { useUserStore } from '../../src/store/useUserStore';
 
 function AppHeader({ eyebrow, title }: { eyebrow: string; title: string }) {
   const router = useRouter();
@@ -53,6 +54,7 @@ export default function HomeScreen() {
   const router = useRouter();
   const games = useGameStore((s) => s.games);
   const sessions = useGroupStore((s) => s.sessions);
+  const username = useUserStore((s) => s.user.username);
   const featured = games.slice(0, 3);
   const nextSession = sessions[0];
 
@@ -65,7 +67,7 @@ export default function HomeScreen() {
       <View style={styles.topGlow} />
 
       <ScrollView contentContainerStyle={styles.scroll} showsVerticalScrollIndicator={false}>
-        <AppHeader eyebrow={dayLabel} title="Olá, JOGADOR." />
+        <AppHeader eyebrow={dayLabel} title={`Olá, ${username || 'JOGADOR'}.`} />
 
         {/* Hero Card */}
         {nextSession && (
