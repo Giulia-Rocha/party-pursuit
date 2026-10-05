@@ -1,190 +1,244 @@
 # 🎮 Party Pursuit
 
-> **Encontre sua próxima mesa.** Descubra board games e conecte-se a jogadores perto de você.
+> **Encontre sua próxima mesa.** Descubra board games, localize partidas próximas e conecte-se a outros jogadores.
 
-![Expo SDK](https://img.shields.io/badge/Expo-~54.0.0-000020?logo=expo&logoColor=white)
+![Expo SDK](https://img.shields.io/badge/Expo-54-000020?logo=expo&logoColor=white)
 ![React Native](https://img.shields.io/badge/React%20Native-0.81-61DAFB?logo=react&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.7-3178C6?logo=typescript&logoColor=white)
-![Zustand](https://img.shields.io/badge/Estado-Zustand-orange)
+![Supabase](https://img.shields.io/badge/Backend-Supabase-3FCF8E?logo=supabase&logoColor=white)
+![Tests](https://img.shields.io/badge/Jest-6%20testes%20passando-C21325?logo=jest&logoColor=white)
 
----
+Projeto semestral da disciplina **Mobile Development & IoT**, desenvolvido em React Native com Expo para os Checkpoints 4, 5 e 6.
 
-## 📱 Sobre o App
+## Sobre o projeto
 
-O **Party Pursuit** resolve um problema real da comunidade de board gamers: **é difícil encontrar grupos para jogar**. O app conecta jogadores locais, exibe sessões abertas perto de você e permite descobrir novos jogos de acordo com o seu perfil.
+Encontrar pessoas disponíveis, um local adequado e um jogo em comum ainda é uma experiência fragmentada entre grupos de mensagens e eventos isolados. O Party Pursuit centraliza esse processo em uma experiência mobile:
 
-### 🎯 Problema
-Grupos de board games vivem dispersos em grupos de WhatsApp, Discord e eventos avulsos — sem centralização, sem descoberta, sem matchmaking.
+- catálogo pesquisável de board games;
+- favoritos persistentes;
+- mesas próximas no mapa e em lista;
+- criação de mesas com jogo, local, horário e capacidade;
+- entrada e saída de partidas;
+- perfil do jogador e notificações;
+- funcionamento com dados do Supabase e fallback local.
 
-### 💡 Solução
-Uma plataforma mobile que funciona como **"Tinder para board games"**: você descobre jogos, vê mesas abertas no mapa e entra nas partidas com um toque.
+## Evolução dos checkpoints
 
----
+| Entrega | Evolução realizada | Situação |
+|---|---|---|
+| **CP4 — Idealização** | Problema, proposta de valor, identidade visual, Figma, arquitetura inicial e modelo de negócio | ✅ Concluído |
+| **CP5 — Protótipo funcional** | Telas navegáveis, catálogo e mesas mockadas, busca, filtros, favoritos, participação, Jest e evidências visuais | ✅ Pronto para entrega |
+| **CP6 — App final** | Supabase Auth/PostgreSQL, catálogo remoto, persistência, mapa, criação de mesas, fallback offline e configuração EAS | 🟡 Código pronto; APK pendente |
 
-## 👥 Time
+### Do protótipo ao app final
 
-| Membro | Papel | Responsabilidades |
-|--------|-------|-------------------|
-| **Giulia Rocha** | Desenvolvedora Back-end | Stores Zustand, tipos TypeScript, dados mockados, navegação |
-| **Gabriel Danius** | Product Owner | Backlog, priorização, documentação de escopo e modelo de negócio |
-| **Carlos Eduardo** | Desenvolvedor Front-end | Componentes de UI, telas, design system, fidelidade ao Figma |
-| **Caio Rossini** | UI/UX Design | Figma, identidade visual, paleta de cores, protótipo de telas |
+| CP5 | CP6 |
+|---|---|
+| Login e cadastro simulados | Autenticação e perfil no Supabase |
+| Jogos em JSON local | Catálogo no PostgreSQL com fallback JSON |
+| Mesas mockadas | Mesas remotas mescladas com mocks demonstrativos |
+| Estado somente em memória | Zustand persistido com AsyncStorage |
+| Mapa conceitual | Mapa Android com localização e fallback web |
+| Participação local | Entrada/saída protegida por RPC transacional |
+| Evidência no Expo/browser | Build Android instalável via EAS |
 
----
+## Funcionalidades entregues
 
-## 🏗 Arquitetura
+- Cadastro e login com validação de formulário.
+- Nome do perfil sincronizado com o usuário autenticado.
+- Catálogo de oito jogos cadastrado no Supabase.
+- Busca e filtros por gênero.
+- Detalhes, favoritos e persistência local.
+- Mapa com solicitação de localização e fallback em São Paulo.
+- Listagem conjunta de mesas remotas, locais e mockadas.
+- Criação de mesa com seleção visual do jogo e capacidade.
+- Entrada e saída de partidas, incluindo proteção contra mesa lotada.
+- Central de notificações com estados lido e removido.
+- Estados de rota não encontrada e dados indisponíveis.
 
+## Arquitetura técnica
+
+| Camada | Tecnologia | Responsabilidade |
+|---|---|---|
+| Aplicativo | Expo SDK 54 + React Native 0.81 | Runtime mobile e acesso aos recursos nativos |
+| Navegação | Expo Router 6 | Rotas por arquivos e rotas dinâmicas |
+| Linguagem | TypeScript strict | Tipagem e segurança durante o desenvolvimento |
+| Estado local | Zustand + AsyncStorage | Filtros, favoritos e fallback persistente |
+| Estado remoto | TanStack Query + Supabase JS | Consulta e sincronização dos dados |
+| Backend | Supabase Auth + PostgreSQL | Usuários, catálogo, mesas, participantes e favoritos |
+| Segurança | Row Level Security + RPCs | Isolamento por usuário e operações transacionais |
+| Mapa | react-native-maps + expo-location | Localização e visualização das mesas |
+| Qualidade | Jest + Testing Library + ESLint | Testes automatizados e análise estática |
+
+```text
+Supabase/PostgreSQL ──→ services ──→ Zustand/React Query ──→ telas
+       ↑                                                    ↓
+ Auth + RLS + RPCs                               JSON/AsyncStorage fallback
 ```
-Stack: Expo SDK ~54.0.0 + Expo Router v4 (file-based) + Zustand + TypeScript
-```
 
-| Decisão | Escolha | Motivo |
-|---------|---------|--------|
-| **Roteamento** | Expo Router v4 (file-based) | Padrão moderno, similar ao Next.js, nativo para iOS/Android |
-| **Estado global** | Zustand | Simples, sem boilerplate, integrado ao Supabase no CP6 |
-| **Linguagem** | TypeScript (strict) | Type safety desde o CP4, previne bugs no CP5/CP6 |
-| **UI** | StyleSheet nativo + design system próprio | Performance máxima, fidelidade ao Figma |
-| **Dados CP4/CP5** | JSON local mockado | Catálogo Supabase no CP6, com fallback local |
+As migrations e o seed do catálogo estão em `supabase/migrations/`.
 
-### Fluxo de dados
-
-```
-src/data/*.json  →  src/store/use*Store.ts (Zustand)  →  app/**/*.tsx (telas)
-                                                       →  src/components/** (componentes)
-```
-
----
-
-## 🚀 Como rodar localmente
+## Como executar
 
 ### Pré-requisitos
-- **Node.js** 20+
-- **npm** 10+
-- **Expo Go** instalado no iPhone (App Store) ou simulador iOS
+
+- Node.js 20 LTS ou superior;
+- npm 10 ou superior;
+- Expo Go ou emulador Android;
+- projeto Supabase para utilizar o modo online.
 
 ### Instalação
 
 ```bash
-# 1. Clone o repositório
-git clone https://github.com/[seu-usuario]/party-pursuit.git
+git clone https://github.com/Giulia-Rocha/party-pursuit.git
 cd party-pursuit
-
-# 2. Instale as dependências
 npm install
-
-# 3. Inicie o servidor de desenvolvimento
-npx expo start
 ```
 
-Copie `.env.example` para `.env` e preencha Supabase/Google Maps para usar o modo online. Sem essas variáveis, o app usa o catálogo e estado persistente locais para demonstração.
+Copie o exemplo de ambiente:
 
-📱 **iOS físico:** Escaneie o QR Code com o **Expo Go** (App Store)  
-💻 **Simulador:** Pressione `i` no terminal
+```powershell
+Copy-Item .env.example .env
+```
 
-🌐 **Navegador:** execute `npm run web`
-🤖 **Android:** execute `npm run android`
+Preencha sem versionar o arquivo:
 
-### Qualidade e build
+```env
+EXPO_PUBLIC_SUPABASE_URL=https://seu-projeto.supabase.co
+EXPO_PUBLIC_SUPABASE_ANON_KEY=sua-chave-publica
+EXPO_PUBLIC_GOOGLE_MAPS_API_KEY=sua-chave-google-maps
+```
+
+Inicie o Expo:
+
+```bash
+npx expo start --clear
+```
+
+- `npm run android`: abre no Android.
+- `npm run web`: abre no navegador.
+- Expo Go: leia o QR Code exibido no terminal.
+
+## Qualidade e testes
 
 ```bash
 npm run typecheck
-npm run lint
 npm test
-npm run build:android
+npm run lint
 ```
 
-O último comando usa o perfil `preview` do EAS e gera um APK instalável.
+Estado validado da entrega:
 
----
+- TypeScript sem erros;
+- 2 suítes e 6 testes automatizados passando;
+- ESLint sem erros, com três avisos legados de BOM nos tokens visuais;
+- build web validado com 18 rotas estáticas.
 
-## 📁 Estrutura de Pastas
+O roteiro de homologação está em [docs/roteiro-testes.md](./docs/roteiro-testes.md).
 
+## Evidências do CP5
+
+| Evidência | Tela/fluxo |
+|---|---|
+| <img src="docs/assets/login.jpg" width="180"> | Login |
+| <img src="docs/assets/cadastro.jpg" width="180"> | Cadastro |
+| <img src="docs/assets/home.jpg" width="180"> | Home e descoberta |
+| <img src="docs/assets/explorar.jpg" width="180"> | Busca e filtros |
+| <img src="docs/assets/jogo.jpg" width="180"> | Detalhes de jogo |
+| <img src="docs/assets/mapa.jpg" width="180"> | Mesas próximas |
+| <img src="docs/assets/perfil.jpg" width="180"> | Perfil |
+| <img src="docs/assets/notf.jpg" width="180"> | Notificações |
+| <img src="docs/assets/todos-jogos.jpg" width="180"> | Catálogo completo |
+| <img src="docs/assets/video.gif" width="180"> | Demonstração do fluxo funcional |
+
+Antes do envio do CP5, registrar no roteiro manual se cada cenário foi aprovado e apontar o print ou trecho do vídeo correspondente.
+
+## Gerar o APK do CP6
+
+O perfil `preview` em `eas.json` já está configurado com `android.buildType: "apk"`. Para concluir a entrega:
+
+1. Vincule o repositório a um projeto EAS:
+
+   ```bash
+   npx eas-cli init --account giulia-rocha
+   ```
+
+2. No Dashboard do Expo, cadastre no ambiente **preview**:
+
+   - `EXPO_PUBLIC_SUPABASE_URL`
+   - `EXPO_PUBLIC_SUPABASE_ANON_KEY`
+   - `EXPO_PUBLIC_GOOGLE_MAPS_API_KEY`
+
+3. Gere o APK:
+
+   ```bash
+   npm run build:android
+   ```
+
+4. Permita que o EAS gere o keystore na primeira execução.
+5. Baixe o `.apk` pelo link fornecido pelo EAS.
+6. Instale em um Android físico e execute o roteiro completo.
+7. Publique o arquivo ou link na release `cp6` do GitHub.
+
+No estado atual, a conta Expo está autenticada, mas o projeto ainda não possui vínculo EAS (`extra.eas.projectId`) nem variáveis confirmadas no ambiente `preview`. Esses são os bloqueios anteriores ao build; depois dele ainda é necessário homologar o APK instalado.
+
+## Estrutura principal
+
+```text
+app/                         rotas e telas Expo Router
+├── (auth)/                  login e cadastro
+├── (tabs)/                  home, explorar, mapa e perfil
+├── details/[id].tsx         detalhes do jogo
+├── party/[id].tsx           detalhes e participação na mesa
+└── session/new.tsx          criação de mesa
+
+src/
+├── components/              componentes de jogos e mapa
+├── data/                    fallback JSON
+├── lib/                     Supabase e storage
+├── providers/               inicialização dos dados e autenticação
+├── services/                catálogo, mesas e favoritos
+├── store/                   stores Zustand
+└── types/                   contratos TypeScript
+
+supabase/migrations/         schema, RLS, RPCs e catálogo inicial
+docs/                        documentação e evidências
 ```
-cp04-mobile/
-├── app/                    # Rotas e telas (Expo Router)
-│   ├── (auth)/             # Telas de Login e Signup
-│   ├── (tabs)/             # Tab bar: Home, Explorar, Mapa, Perfil
-│   ├── details/[id].tsx    # Detalhe de jogo (dynamic route)
-│   ├── party/[id].tsx      # Detalhe de sessão
-│   ├── catalog.tsx         # Catálogo completo
-│   └── notifications.tsx   # Central de notificações
-│
-├── src/
-│   ├── components/         # Componentes reutilizáveis
-│   │   ├── game/           # GameTile, GameRow
-│   │   └── group/          # (CP5)
-│   ├── constants/          # Design System (Colors, Typography, Spacing)
-│   ├── store/              # Estado global (Zustand)
-│   ├── types/              # TypeScript interfaces
-│   └── data/               # Mock data JSON
-│
-└── docs/                   # Documentação do projeto
-```
 
-> Veja [docs/arquitetura.md](./docs/arquitetura.md) para decisões técnicas detalhadas.
+## Documentação
 
----
+| Documento | Conteúdo |
+|---|---|
+| [Escopo](./docs/escopo.md) | Problema, público-alvo e proposta de valor |
+| [Modelo de negócio](./docs/modelo-negocio.md) | Pitch, monetização e diferencial competitivo |
+| [Arquitetura](./docs/arquitetura.md) | Decisões técnicas e fluxo dos dados |
+| [Membros](./docs/membros.md) | Papéis e responsabilidades |
+| [Fluxos](./docs/fluxos-navegacao.md) | Jornadas funcionais do aplicativo |
+| [Roteiro de testes](./docs/roteiro-testes.md) | Cenários e evidências de homologação |
+| [Manual de uso](./docs/manual-uso.md) | Instalação e operação do app final |
 
-## 📸 Imagens do App
-
-Abaixo estão os prints das principais telas e componentes do Party Pursuit desenvolvidos para o Checkpoint 4 e 5:
-
-| Foto | Descrição |
-|------|-----------|
-| <img src="docs/assets/login.jpg" width="200"> | **Tela de Login:** Acesso ao app com a nova identidade visual. |
-| <img src="docs/assets/cadastro.jpg" width="200"> | **Tela de Cadastro:** Formulário de registro de novos jogadores. |
-| <img src="docs/assets/home.jpg" width="200"> | **Home:** Lista de jogos em destaque e mesas próximas. |
-| <img src="docs/assets/explorar.jpg" width="200"> | **Explorar:** Busca de títulos e filtros por categorias. |
-| <img src="docs/assets/jogo.jpg" width="200"> | **Detalhes do Jogo:** Informações, avaliações e mesas ativas do jogo escolhido. |
-| <img src="docs/assets/mapa.jpg" width="200"> | **Mapa de Grupos:** Mapa interativo para buscar grupos de jogos próximos. |
-| <img src="docs/assets/notf.jpg" width="200"> | **Notificações:** Tela de Notificações |
-| <img src="docs/assets/perfil.jpg" width="200"> | **Perfil:** Perfil, configurações, privacidade. |
-| <img src="docs/assets/todos-jogos.jpg" width="200"> | **Jogos** Busca de Jogos, Filtro por tema. |
-| <img src="docs/assets/video.gif" width="200"> | **GIF de Funcionamento do App**  |
-
-
-
-
----
-
-## 🎨 Identidade Visual
+## Identidade visual
 
 | Token | Valor | Uso |
-|-------|-------|-----|
-| Cor primária | `#00F0FF` — Ciano neon | Destaques, ícones ativos, bordas |
-| Cor de ação | `#FF003C` — Magenta | Botão CTA principal, notificações |
-| Background | `#05060C` — Ink | Fundo base de todas as telas |
-| Tema | Dark cyberpunk / terminal hacker | — |
+|---|---|---|
+| Ciano | `#00F0FF` | Destaques, ícones ativos e bordas |
+| Magenta | `#FF003C` | Chamadas para ação e notificações |
+| Ink | `#05060C` | Fundo principal |
+| Tema | Cyberpunk escuro | Identidade geral |
 
-> 🎨 Design no Figma: [Figma](https://www.figma.com/make/q0A30PV2FeWpNxcWumpe8V/GameFinder-Mobile-App-Prototype?fullscreen=1&t=mX86JRN6WfHfD5GS-1&code-node-id=0-6)
+[Protótipo no Figma](https://www.figma.com/make/q0A30PV2FeWpNxcWumpe8V/GameFinder-Mobile-App-Prototype?fullscreen=1&t=mX86JRN6WfHfD5GS-1&code-node-id=0-6)
 
----
+## Equipe
 
-## 📋 Checkpoints
-
-- [x] **CP4** — Idealização: conceito, marca, documentação, estrutura técnica completa
-- [ ] **CP5** — Código pronto; falta preencher o roteiro manual e anexar evidência Android/web
-- [ ] **CP6** — Implementação pronta; depende de homologar Supabase/Maps e anexar o APK
-
----
-
-## 📄 Documentação
-
-| Documento | Descrição |
-|-----------|-----------|
-| [docs/escopo.md](./docs/escopo.md) | Problema, público-alvo e proposta de valor |
-| [docs/modelo-negocio.md](./docs/modelo-negocio.md) | Pitch e modelo de negócio |
-| [docs/arquitetura.md](./docs/arquitetura.md) | Decisões técnicas e arquitetura |
-| [docs/membros.md](./docs/membros.md) | Papéis e responsabilidades do time |
-| [docs/fluxos-navegacao.md](./docs/fluxos-navegacao.md) | Fluxos funcionais do aplicativo |
-| [docs/roteiro-testes.md](./docs/roteiro-testes.md) | Homologação manual e evidências |
-| [docs/manual-uso.md](./docs/manual-uso.md) | Instalação e uso do app final |
+| Membro | Papel principal |
+|---|---|
+| Giulia Rocha | Back-end, stores, Supabase e navegação |
+| Gabriel Danius | Product Owner, escopo e documentação |
+| Carlos Eduardo | Front-end, componentes e design system |
+| Caio Rossini | UI/UX, identidade visual e protótipo |
 
 ---
 
-## 📜 Licença
+Projeto acadêmico — FIAP, Engenharia de Software, 3º ano.
 
-Projeto acadêmico — FIAP, Engenharia de Software, 3º Ano  
-Disciplina: Mobile Development & IoT — Prof. Hercules Ramos
-
-**#KeepCoding #ReactNative #FIAP**
+Disciplina: Mobile Development & IoT.
