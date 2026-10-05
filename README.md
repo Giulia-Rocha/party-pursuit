@@ -154,34 +154,24 @@ O roteiro de homologação está em [docs/roteiro-testes.md](./docs/roteiro-test
 
 Os resultados e as evidências associadas estão registrados no roteiro manual do projeto.
 
-## Gerar o APK do CP6
+## Baixar e instalar o APK do CP6
 
-O perfil `preview` em `eas.json` já está configurado com `android.buildType: "apk"`. Para concluir a entrega:
+O Party Pursuit é distribuído para avaliação por meio de um link direto, fora da Google Play. A instalação está disponível somente para celulares e tablets Android.
 
-1. Vincule o repositório a um projeto EAS:
+> Instale o APK apenas pelo link compartilhado pela equipe do projeto. Não prossiga caso tenha recebido o arquivo de uma fonte diferente.
 
-   ```bash
-   npx eas-cli init --account giulia-rocha
-   ```
+1. Abra no dispositivo Android o link do APK fornecido pela equipe.
+2. Na página exibida, toque em **Download** para baixar o arquivo `.apk`.
+3. O navegador poderá avisar que esse tipo de arquivo pode ser nocivo. Esse alerta aparece porque o aplicativo não foi publicado na Google Play. Confirme em **Fazer download mesmo assim** somente se estiver usando o link oficial do projeto.
+4. Ao terminar, toque na notificação do download ou abra o aplicativo **Arquivos/Downloads** e selecione o APK.
+5. Caso o Android bloqueie a instalação, toque em **Configurações** no aviso e habilite **Permitir desta fonte** para o navegador ou gerenciador de arquivos utilizado. Volte para a tela anterior.
+6. Toque em **Instalar** e aguarde a conclusão.
+7. Se o Google Play Protect informar que o desenvolvedor não é reconhecido ou que o aplicativo não foi verificado, abra **Mais detalhes** e escolha **Instalar mesmo assim**. Esse aviso é esperado em uma versão acadêmica distribuída fora da loja.
+8. Toque em **Abrir** para iniciar o Party Pursuit e conceda a permissão de localização quando solicitada.
 
-2. No Dashboard do Expo, cadastre no ambiente **preview**:
+Depois da instalação, é recomendável voltar às configurações do Android e desativar **Permitir desta fonte**. Para instalar uma versão mais recente, baixe o novo APK pelo link atualizado e instale-o sobre a versão existente.
 
-   - `EXPO_PUBLIC_SUPABASE_URL`
-   - `EXPO_PUBLIC_SUPABASE_ANON_KEY`
-   - `EXPO_PUBLIC_GOOGLE_MAPS_API_KEY`
-
-3. Gere o APK:
-
-   ```bash
-   npm run build:android
-   ```
-
-4. Permita que o EAS gere o keystore na primeira execução.
-5. Baixe o `.apk` pelo link fornecido pelo EAS.
-6. Instale em um Android físico e execute o roteiro completo.
-7. Publique o arquivo ou link na release `cp6` do GitHub.
-
-No estado atual, a conta Expo está autenticada, mas o projeto ainda não possui vínculo EAS (`extra.eas.projectId`) nem variáveis confirmadas no ambiente `preview`. Esses são os bloqueios anteriores ao build; depois dele ainda é necessário homologar o APK instalado.
+Os nomes dos botões podem variar de acordo com a versão do Android e o fabricante do aparelho. O APK não pode ser instalado em iPhone ou iPad.
 
 ## Estrutura principal
 
