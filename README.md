@@ -145,13 +145,14 @@ O roteiro de homologação está em [docs/roteiro-testes.md](./docs/roteiro-test
 | <img src="docs/assets/home.jpg" width="180"> | Home e descoberta |
 | <img src="docs/assets/explorar.jpg" width="180"> | Busca e filtros |
 | <img src="docs/assets/jogo.jpg" width="180"> | Detalhes de jogo |
-| <img src="docs/assets/mapa.jpg" width="180"> | Mesas próximas |
-| <img src="docs/assets/perfil.jpg" width="180"> | Perfil |
+| <img src="docs/assets/mapa-cp5.png" width="180"> | Mapa real, fallback de localização e mesas mockadas |
+| <img src="docs/assets/perfil-cp5.png" width="180"> | Perfil sincronizado com o usuário autenticado |
 | <img src="docs/assets/notf.jpg" width="180"> | Notificações |
 | <img src="docs/assets/todos-jogos.jpg" width="180"> | Catálogo completo |
-| <img src="docs/assets/video.gif" width="180"> | Demonstração do fluxo funcional |
+| <img src="docs/assets/criar-mesa-cp5.png" width="180"> | Seleção de jogo e formulário de criação de mesa |
+| <img src="docs/assets/mobile-cp5-6.gif" width="180"> | Demonstração atualizada dos fluxos do CP5 e CP6 |
 
-Antes do envio do CP5, registrar no roteiro manual se cada cenário foi aprovado e apontar o print ou trecho do vídeo correspondente.
+Os resultados e as evidências associadas estão registrados no roteiro manual do projeto.
 
 ## Gerar o APK do CP6
 
