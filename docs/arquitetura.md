@@ -1,6 +1,6 @@
-﻿# ðŸ— Arquitetura TÃ©cnica â€” Party Pursuit
+﻿# Arquitetura Técnica Party Pursuit
 
-## Stack TecnolÃ³gico
+## Stack Tecnológico
 
 | Camada | Tecnologia | VersÃ£o |
 |--------|-----------|--------|
@@ -86,10 +86,10 @@ src/constants/  (Colors, Typography, Spacing)
 
 | CP4 (atual) | CP5 | CP6 |
 |------------|-----|-----|
-| JSON local mockado | json-server / mock API | API REST real |
+| JSON local mockado | json-server / mock API | Catálogo no Supabase |
 | Zustand com dados estÃ¡ticos | Zustand + loading states | React Query + Zustand |
 | NavegaÃ§Ã£o estruturada | Telas completas funcionais | Build EAS + APK |
-| Componentes placeholder | Componentes completos | IntegraÃ§Ã£o BoardGameGeek API |
+| Componentes placeholder | Componentes completos | Persistência completa no Supabase |
 
 ---
 
@@ -112,3 +112,15 @@ import { Colors } from '@constants/Colors';
 - `src/types/Game.ts` â€” Interface completa do board game
 - `src/types/Group.ts` â€” Interface de sessÃ£o/mesa
 - `src/types/User.ts` â€” Interface do perfil do usuÃ¡rio
+
+---
+
+## Arquitetura final do CP6
+
+- **Supabase Auth + PostgreSQL:** autenticação, perfis, favoritos, mesas, participantes e notificações, protegidos por RLS.
+- **Catálogo Supabase:** mantém os jogos em uma tabela controlada pelo projeto; o JSON local é o fallback offline.
+- **TanStack Query:** política comum de cache/retry para estado remoto; Zustand guarda estado local persistente com AsyncStorage.
+- **Mapas:** `react-native-maps` e `expo-location` no Android; lista compatível no navegador e fallback em São Paulo quando a permissão for negada.
+- **Concorrência:** as RPCs `join_session` e `leave_session` centralizam as regras de capacidade e participação.
+
+As versões válidas são as declaradas em `package.json`; este arquivo não deve fixar versões diferentes do manifesto.

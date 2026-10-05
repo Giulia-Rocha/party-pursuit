@@ -41,10 +41,10 @@ Stack: Expo SDK ~54.0.0 + Expo Router v4 (file-based) + Zustand + TypeScript
 | Decisão | Escolha | Motivo |
 |---------|---------|--------|
 | **Roteamento** | Expo Router v4 (file-based) | Padrão moderno, similar ao Next.js, nativo para iOS/Android |
-| **Estado global** | Zustand | Simples, sem boilerplate, fácil de escalar para API real no CP6 |
+| **Estado global** | Zustand | Simples, sem boilerplate, integrado ao Supabase no CP6 |
 | **Linguagem** | TypeScript (strict) | Type safety desde o CP4, previne bugs no CP5/CP6 |
 | **UI** | StyleSheet nativo + design system próprio | Performance máxima, fidelidade ao Figma |
-| **Dados CP4/CP5** | JSON local mockado | Progressão natural → API real no CP6 |
+| **Dados CP4/CP5** | JSON local mockado | Catálogo Supabase no CP6, com fallback local |
 
 ### Fluxo de dados
 
@@ -76,8 +76,24 @@ npm install
 npx expo start
 ```
 
+Copie `.env.example` para `.env` e preencha Supabase/Google Maps para usar o modo online. Sem essas variáveis, o app usa o catálogo e estado persistente locais para demonstração.
+
 📱 **iOS físico:** Escaneie o QR Code com o **Expo Go** (App Store)  
 💻 **Simulador:** Pressione `i` no terminal
+
+🌐 **Navegador:** execute `npm run web`
+🤖 **Android:** execute `npm run android`
+
+### Qualidade e build
+
+```bash
+npm run typecheck
+npm run lint
+npm test
+npm run build:android
+```
+
+O último comando usa o perfil `preview` do EAS e gera um APK instalável.
 
 ---
 
@@ -147,8 +163,8 @@ Abaixo estão os prints das principais telas e componentes do Party Pursuit dese
 ## 📋 Checkpoints
 
 - [x] **CP4** — Idealização: conceito, marca, documentação, estrutura técnica completa
-- [ ] **CP5** — Protótipo funcional: telas completas, navegação, testes com Jest
-- [ ] **CP6** — App final: integração com API real + APK instalável
+- [ ] **CP5** — Código pronto; falta preencher o roteiro manual e anexar evidência Android/web
+- [ ] **CP6** — Implementação pronta; depende de homologar Supabase/Maps e anexar o APK
 
 ---
 
@@ -160,6 +176,9 @@ Abaixo estão os prints das principais telas e componentes do Party Pursuit dese
 | [docs/modelo-negocio.md](./docs/modelo-negocio.md) | Pitch e modelo de negócio |
 | [docs/arquitetura.md](./docs/arquitetura.md) | Decisões técnicas e arquitetura |
 | [docs/membros.md](./docs/membros.md) | Papéis e responsabilidades do time |
+| [docs/fluxos-navegacao.md](./docs/fluxos-navegacao.md) | Fluxos funcionais do aplicativo |
+| [docs/roteiro-testes.md](./docs/roteiro-testes.md) | Homologação manual e evidências |
+| [docs/manual-uso.md](./docs/manual-uso.md) | Instalação e uso do app final |
 
 ---
 
